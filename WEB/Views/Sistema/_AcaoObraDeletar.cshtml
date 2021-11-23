@@ -1,0 +1,23 @@
+﻿@model DTO.Obra
+@* BOX ACAO *@
+<div class="box-acao animated zoomInDown">
+    @* DELETAR OBRA *@
+    <div id="adicionar-obra" class="animated">
+        <form>
+            <h3>Deseja realmente deletar essa obra e todos seus elementos?</h3>
+            <input type="hidden" id="ID" name="ID" value="@Model.ID" />
+
+            <a data-ajax="true" data-ajax-loading="#progress" data-ajax-mode="replace" data-ajax-update="#resultado" href="~/Sistema/ObraDeletar?idObra=@Model.ID">
+                <input class="btn" type="button" value="SIM">
+            </a>
+            <input class="btn" type="button" value="NÃO" onclick="fechaFormulario('.box-acao')">
+
+            <div class="btn-fechar" onclick="fechaFormulario('.box-acao')"><span class="icone-fonte"></span></div>
+        </form>
+    </div>
+</div>
+@* SCRIPTS *@
+<script type="text/javascript">
+    $("#progress").css('display', 'none');
+</script>
+

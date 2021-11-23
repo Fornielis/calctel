@@ -1,0 +1,108 @@
+﻿@model DTO.Codigo
+@* TITULO *@
+<div id="box-superior">
+    <h1 class="titulo animated bounceInLeft"><span class="icone-fonte"></span> Itens Obra <span class="icone-fonte"></span> @ViewBag.Obra.numObra</h1>
+    <h1 class="btn-acoes">
+        <a data-ajax="true" data-ajax-loading="#progress" data-ajax-mode="replace" data-ajax-update="#resultado" href="~/Sistema/ObraLista">
+            <span class="icone-fonte"></span>
+        </a>
+        <span id="novo-item" class="icone-fonte" onclick="abreFormulario('#adicionar-item-obra')"></span>
+    </h1>
+</div>
+@* TABELA - LISTA OBRAS ITENS *@
+<table id="tabela-itens-obra" class="animated bounceInRight">
+    <thead>
+        <tr>
+            <th>OBRA</th>
+            <th>CONTRATO</th>
+            <th>CÓDIGO</th>
+            <th>DESCRIÇÃO</th>
+            <th>APURADO</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            foreach (var item in ViewBag.Itens)
+            {
+                // SE EXITIREM ITENS NA LISTA
+                if (!(item.numObra == null))
+                {
+                    //MONTAGEM LINK
+                    string href = Request.Url.Scheme + "://" + Request.Url.Authority + "/Sistema/ObraItemSelecionado?numObra=" + @item.numObra + "&codigo=" + @item.codigo;
+                    // TABELA
+                    <tr onclick="linkLinhaItem('@href')">
+                        <td class="numObra">@ViewBag.Obra.numObra</td>
+                        <td>@ViewBag.Obra.contrato</td>
+                        <td>@item.codigo</td>
+                        <td class="descricao">@item.descricao</td>
+
+                        @{
+                            if (item.tipo == "MT") // SE FOR MATERIAL
+                            {
+                                <td class="pading-top-inf legenda-info">
+                                    <b>MATERIAL</b> <br />
+                                    @* LMN *@
+                                    <div class="legenda-item categoria LMN-categoria"><p>LISTA MATERIAL</p></div>
+                                    <div class="legenda-item quantidade"><p>@item.MT_itemLMN</p></div>
+                                    <div class="legenda-item valor LMN-valor"><p>@item.MT_valorLMN</p></div>
+                                    @* OPT *@
+                                    <div class="legenda-item categoria OPT-categoria"><p>SUGESTÃO</p></div>
+                                    <div class="legenda-item quantidade"><p>@item.MT_itemOPT</p></div>
+                                    <div class="legenda-item valor OPT-valor"><p>@item.MT_valorOPT</p></div>
+                                    @* IND *@
+                                    <div class="legenda-item categoria IND-categoria"><p>INDEVIDO</p></div>
+                                    <div class="legenda-item quantidade"><p>@item.MT_itemIND</p></div>
+                                    <div class="legenda-item valor IND-valor"><p>@item.MT_valorIND</p></div>
+                                    @* DIF *@
+                                    <div class="legenda-item categoria DIF-categoria"><p>CONSIDERADO</p></div>
+                                    <div class="legenda-item quantidade"><p>@item.MT_itemDIF</p></div>
+                                    <div class="legenda-item valor DIF-valor"><p>@item.MT_valorDIF</p></div>
+                                </td>
+                            }
+                            else // SE FOR MÃO OBRA
+                            {
+                                <td class="pading-top-inf legenda-info">
+                                    <b>MÃO OBRA</b> <br />
+                                    @* OPT *@
+                                    <div class="legenda-item categoria OPT-categoria"><p>SUGESTÃO</p></div>
+                                    <div class="legenda-item quantidade"><p>@item.MO_itemOPT</p></div>
+                                    <div class="legenda-item valor OPT-valor"><p>@item.MO_valorOPT</p></div>
+                                    @* IND *@
+                                    <div class="legenda-item categoria IND-categoria"><p>INDEVIDO</p></div>
+                                    <div class="legenda-item quantidade"><p>@item.MO_itemIND</p></div>
+                                    <div class="legenda-item valor IND-valor"><p>@item.MO_valorIND</p></div>
+                                </td>
+                            }
+                        }
+                    </tr>
+                                }
+                            }
+        }
+    </tbody>
+</table>
+@* ADICIONAR ITEM OBRA *@
+<div id="adicionar-item-obra" class="animated">
+    @* FOMULÁRIO *@
+    <div id="box-formulario">
+        <form action="~/Sistema/CodigoPorCod" data-ajax="true" data-ajax-loading="#progress" data-ajax-mode="replace" data-ajax-update="#retorno-formulario" id="form" method="post">
+            <section>
+                <span class="field-validation-valid mensagem-erro" data-valmsg-for="cod" data-valmsg-replace="true"></span>
+                <input class="text-box single-line txt" data-val="true" data-val-required="OBRIGATÓRIO" id="cod" name="cod" value="" placeholder="CÓDIGO" /><br />
+                <input type="hidden" id="numObra" name="numObra" value="@ViewBag.Obra.numObra" />
+                <input class="btn" type="submit" value="">
+                <div class="btn-fechar" onclick="fechaFormularioCodigo('#adicionar-item-obra')"><span class="icone-fonte"></span></div>
+            </section>
+        </form>
+        @* RETORNO FORMULÁRIOS *@
+        <section id="retorno-formulario"></section>
+    </div>
+</div>
+@* ALTERAR ITENS *@
+<div id="alterar-itens" class="animated"></div>
+@* SCRIPTS *@
+<script type="text/javascript">
+    $("#progress").css('display', 'none');
+    // VALIDAÇÃO
+    jQuery.validator.unobtrusive.parse();
+    jQuery.validator.unobtrusive.parse("#form");
+</script>

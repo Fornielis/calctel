@@ -1,0 +1,43 @@
+﻿@model DTO.Obra
+@* BOX ACAO *@
+<div class="box-acao animated zoomInDown">
+    @* ALTERA OBRA *@
+    <div id="adicionar-obra" class="animated">
+        <form action="~/Sistema/ObraAlterar" data-ajax="true" data-ajax-loading="#progress" data-ajax-mode="replace" data-ajax-update="#resultado" id="form-ObraAlterar" method="post">
+            <h2>ALTERAR OBRA</h2>
+            <input type="hidden" id="ID" name="ID" value="@Model.ID" />
+            <input type="hidden" id="numObraChecagem" name="numObraChecagem" value="@Model.numObraChecagem" />
+            <input type="hidden" id="contratoChecagem" name="contratoChecagem" value="@Model.contratoChecagem" />
+
+            <span class="field-validation-valid mensagem-erro" data-valmsg-for="numObra" data-valmsg-replace="true"></span>
+            <input class="text-box single-line txt" data-val="true" data-val-required="OBRIGATÓRIO" id="numObra" name="numObra" type="number" value="@Model.numObra"/><br />
+
+            <span class="field-validation-valid mensagem-erro" data-valmsg-for="ValorMaoObra" data-valmsg-replace="true"></span>
+            <input class="text-box single-line txt mask-valor" data-val="true" data-val-required="OBRIGATÓRIO" id="ValorMaoObra" name="ValorMaoObra" type="text"  value="@Model.ValorMaoObra" /><br />
+            
+
+            <span class="field-validation-valid mensagem-erro" data-valmsg-for="contrato" data-valmsg-replace="true"></span>
+            <select class="text-box single-line uppercase txt" data-val="true" data-val-required="OBRIGATÓRIO" id="contrato" name="contrato">
+                <option value="@Model.contrato">@Model.contrato</option>
+                <option value="">------------------------</option>
+                @{
+                    foreach (var item in ViewBag.Contratos)
+                    {
+                        <option value="@item.contrato">@item.contrato</option>
+                    }
+                }
+            </select>
+
+            <input class="btn" type="submit" value="Alterar">
+            <div class="btn-fechar" onclick="fechaFormulario('.box-acao')"><span class="icone-fonte"></span></div>
+        </form>
+    </div>
+</div>
+@* SCRIPTS *@
+<script type="text/javascript">
+    $("#progress").css('display', 'none');
+    mascarasTextos();
+    // VALIDAÇÃO
+    jQuery.validator.unobtrusive.parse();
+    jQuery.validator.unobtrusive.parse("#form-ObraAlterar");
+</script>

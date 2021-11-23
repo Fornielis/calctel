@@ -1,0 +1,58 @@
+﻿@model DTO.ObraItem
+@* CONTAINER CONTEUDO *@
+<div id="box-formulario">
+    <div id="box-retorno-formulario">
+        @* FORMULÁRIO *@
+        <form action="~/Sistema/ObraAlterarMT" data-ajax="true" data-ajax-loading="#progress" data-ajax-mode="replace" data-ajax-update="#resultado" id="form_alterarMT" method="post">
+            <h3>ALTERAR - CÓDIGO MATERIAL</h3>
+            <p>@Model.descricao</p>
+
+            <input type="hidden" id="numObra" name="numObra" value="@Model.numObra" />
+            <input type="hidden" id="contrato" name="contrato" value="@Model.contrato" />
+            <input type="hidden" id="codigo" name="codigo" value="@Model.codigo" />
+            <input type="hidden" id="descricao" name="descricao" value="@Model.descricao" />
+            <input type="hidden" id="tipo" name="tipo" value="@Model.tipo" />
+
+            <label><span class="icone-fonte seta-laranja"></span> LISTA MATERIAL NECESSÁRIO</label><span class="field-validation-valid mensagem-erro" data-valmsg-for="MT_itemLMN" data-valmsg-replace="true"></span>
+            <input class="text-box single-line txt mask-valor" data-val="true" data-val-required="OBRIGATÓRIO" id="MT_itemLMN" name="MT_itemLMN" value="@Model.MT_itemLMN" /><br />
+
+            <label><span class="icone-fonte seta-verde"></span> SUGETSÃO | OPORTUNIDADE</label><span class="field-validation-valid mensagem-erro" data-valmsg-for="MT_itemOPT" data-valmsg-replace="true"></span>
+            <input class="text-box single-line txt mask-valor" data-val="true" data-val-required="OBRIGATÓRIO" id="MT_itemOPT" name="MT_itemOPT" value="@Model.MT_itemOPT" /><br />
+
+            <label><span class="icone-fonte seta-vermelha"></span> INDEVIDO</label><span class="field-validation-valid mensagem-erro" data-valmsg-for="MT_itemIND" data-valmsg-replace="true"></span>
+            <input class="text-box single-line txt mask-valor" data-val="true" data-val-required="OBRIGATÓRIO" id="MT_itemIND" name="MT_itemIND" value="@Model.MT_itemIND" /><br />
+
+            <input type="hidden" id="MT_valor" name="MT_valor" value="@Model.MT_valor" />
+
+            <div id="box-btn">
+                <input class="btn btn-deletar" type="button" value="DELETAR" onclick="visivelDeletar()">
+                <input class="btn" type="submit" value="ALTERAR">
+            </div>
+
+            <div id="box-excluir">
+                <h1>Deseja realmente deletar essa avaliação?</h1>
+
+                @{ // MONTAGEM LINK
+                    string href = Request.Url.Scheme + "://" + Request.Url.Authority + "/Sistema/ObraDeletarItem?numObra=" + @Model.numObra + "&codigo=" + @Model.codigo + "&contrato=" + @Model.contrato;
+                    <a data-ajax="true" data-ajax-loading="#progress" data-ajax-mode="replace" data-ajax-update="#resultado" href="@href">
+                        <input class="btn" type="button" value="SIM">
+                    </a>
+                }
+                <input class="btn" type="button" value="NÃO" onclick="invisivelDeletar()">
+            </div>
+
+            <div class="btn-fechar" onclick="fechaFormularioAlteracao()"><span class="icone-fonte"></span></div>
+        </form>
+    </div>
+</div>
+@* SCRIPTS *@
+<script type="text/javascript">
+        // AÇÕES
+        $("#progress").css('display', 'none');
+        $("#alterar-itens").css("display", "block");
+        $("#alterar-itens").addClass("zoomInDown");
+        mascarasTextos();
+        // VALIDAÇÃO
+        jQuery.validator.unobtrusive.parse();
+        jQuery.validator.unobtrusive.parse("#form_alterarMT");
+</script>

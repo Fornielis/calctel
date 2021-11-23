@@ -1,0 +1,33 @@
+﻿@model DTO.ObraItem
+@* CONTAINER CONTEUDO *@
+<div id="box-retorno-formulario">
+    <form action="~/Sistema/ObraGravarMT" data-ajax="true" data-ajax-loading="#progress" data-ajax-mode="replace" data-ajax-update="#resultado" id="formMT" method="post">
+        <h3>CÓDIGO MATERIAL</h3>
+        <p>@ViewBag.Codigo.descricao</p>
+
+        <input type="hidden" id="IdObra" name="IdObra" value="@ViewBag.Obra.ID" />
+        <input type="hidden" id="numObra" name="numObra" value="@ViewBag.Obra.numObra" />
+        <input type="hidden" id="contrato" name="contrato" value="@ViewBag.Obra.contrato" />
+        <input type="hidden" id="codigo" name="codigo" value="@ViewBag.Codigo.cod" />
+        <input type="hidden" id="descricao" name="descricao" value="@ViewBag.Codigo.descricao" />            
+        <input type="hidden" id="tipo" name="tipo" value="@ViewBag.Codigo.tipo" />
+
+        <label><span class="icone-fonte seta-laranja"></span> LISTA MATERIAL NECESSÁRIO</label><span class="field-validation-valid mensagem-erro" data-valmsg-for="MT_itemLMN" data-valmsg-replace="true"></span>
+        <input class="text-box single-line txt mask-valor" data-val="true" data-val-required="OBRIGATÓRIO" id="MT_itemLMN" name="MT_itemLMN"  value=""  /><br />
+
+        <label><span class="icone-fonte seta-verde"></span> SUGETSÃO | OPORTUNIDADE</label><span class="field-validation-valid mensagem-erro" data-valmsg-for="MT_itemOPT" data-valmsg-replace="true"></span>
+        <input class="text-box single-line txt mask-valor" data-val="true" data-val-required="OBRIGATÓRIO" id="MT_itemOPT" name="MT_itemOPT" value=""  /><br />
+
+        <label><span class="icone-fonte seta-vermelha"></span> INDEVIDO</label><span class="field-validation-valid mensagem-erro" data-valmsg-for="MT_itemIND" data-valmsg-replace="true"></span>
+        <input class="text-box single-line txt mask-valor" data-val="true" data-val-required="OBRIGATÓRIO" id="MT_itemIND" name="MT_itemIND" value="" /><br />
+         
+        <input type="hidden" id="MT_valor" name="MT_valor" value="@ViewBag.Codigo.MT_valor" />
+        <input class="btn" type="submit" value="SALVAR">
+    </form>
+</div>
+<script type="text/javascript">
+    mascarasTextos();
+    // VALIDAÇÃO
+    jQuery.validator.unobtrusive.parse();
+    jQuery.validator.unobtrusive.parse("#formMT");
+</script>

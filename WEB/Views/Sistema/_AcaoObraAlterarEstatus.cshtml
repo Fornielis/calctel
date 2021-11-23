@@ -1,0 +1,38 @@
+﻿@model DTO.Obra
+@* BOX ACAO *@
+<div class="box-acao animated zoomInDown">
+    @* ALTERA ESTATUS *@
+    <div id="adicionar-obra" class="animated">
+        <form action="~/Sistema/ObraAlterarEstatus" data-ajax="true" data-ajax-loading="#progress" data-ajax-mode="replace" data-ajax-update="#resultado" id="form-ObraAlterarEstatus" method="post">
+            <h2>ALTERAR STATUS</h2>
+            <input type="hidden" id="ID" name="ID" value="@Model.ID" />
+
+            <span class="field-validation-valid mensagem-erro" data-valmsg-for="contrato" data-valmsg-replace="true"></span>
+            <select class="text-box single-line uppercase txt" data-val="true" data-val-required="OBRIGATÓRIO" id="Estatus" name="Estatus">
+                @{
+                    if (Model.Estatus == "AB")
+                    {
+                        <option value="@Model.contrato">ABERTO</option>
+                        <option value="FN">FINALIZADO</option>
+                    }
+                    else
+                    {
+                        <option value="@Model.contrato">FINALIZADO</option>
+                        <option value="AB">ABERTO</option>
+                    }
+                }
+            </select>
+
+            <input class="btn" type="submit" value="Alterar">
+            <div class="btn-fechar" onclick="fechaFormulario('.box-acao')"><span class="icone-fonte"></span></div>
+        </form>
+    </div>
+</div>
+@* SCRIPTS *@
+<script type="text/javascript">
+    $("#progress").css('display', 'none');
+    mascarasTextos();
+    // VALIDAÇÃO
+    jQuery.validator.unobtrusive.parse();
+    jQuery.validator.unobtrusive.parse("#form-ObraAlterarEstatus");
+</script>

@@ -1,0 +1,33 @@
+﻿@model DTO.ObraItem
+@* CONTAINER CONTEUDO *@
+<div id="box-retorno-formulario">
+    <form action="~/Sistema/ObraGravarMO" data-ajax="true" data-ajax-loading="#progress" data-ajax-mode="replace" data-ajax-update="#resultado" id="formMO" method="post">
+        <h3>CÓDIGO MÃO OBRA</h3>
+        <p>@ViewBag.Codigo.descricao</p>
+
+        <input type="hidden" id="IdObra" name="IdObra" value="@ViewBag.Obra.ID" />
+        <input type="hidden" id="numObra" name="numObra" value="@ViewBag.Obra.numObra" />
+        <input type="hidden" id="contrato" name="contrato" value="@ViewBag.Obra.contrato" />
+        <input type="hidden" id="codigo" name="codigo" value="@ViewBag.Codigo.cod" />
+        <input type="hidden" id="descricao" name="descricao" value="@ViewBag.Codigo.descricao" />
+        <input type="hidden" id="tipo" name="tipo" value="@ViewBag.Codigo.tipo" />
+        <input type="hidden" id="MO_classe" name="MO_classe" value="@ViewBag.Codigo.MO_classe" />
+        <input type="hidden" id="MO_ponto" name="MO_ponto" value="@ViewBag.Codigo.MO_ponto" />
+        <input type="hidden" id="MO_baremo" name="MO_baremo" value="@ViewBag.Codigo.MO_baremo" />
+
+        <label><span class="icone-fonte seta-verde"></span> SUGETSÃO | OPORTUNIDADE</label><span class="field-validation-valid mensagem-erro" data-valmsg-for="MO_itemOPT" data-valmsg-replace="true"></span>
+        <input class="text-box single-line txt mask-valor" data-val="true" data-val-required="OBRIGATÓRIO" id="MO_itemOPT" name="MO_itemOPT" value="" /><br />
+
+        <label><span class="icone-fonte seta-vermelha"></span> INDEVIDO</label><span class="field-validation-valid mensagem-erro" data-valmsg-for="MO_itemIND" data-valmsg-replace="true"></span>
+        <input class="text-box single-line txt mask-valor" data-val="true" data-val-required="OBRIGATÓRIO" id="MO_itemIND" name="MO_itemIND" value="" /><br />
+
+        <input class="btn" type="submit" value="SALVAR">
+    </form>
+</div>
+@* SCRIPTS *@
+<script type="text/javascript">
+    mascarasTextos();
+    // VALIDAÇÃO
+    jQuery.validator.unobtrusive.parse();
+    jQuery.validator.unobtrusive.parse("#formMO");
+</script>

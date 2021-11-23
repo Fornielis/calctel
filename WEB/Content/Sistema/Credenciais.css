@@ -1,0 +1,126 @@
+﻿/* Responsividade:
+   
+    - Grid Bootstrap:
+        col-xs | até 480px
+        col-sm | maior igual 768px
+        col-md | maior igual 998px
+        col-lg | maior igual 1200px
+-------------------------------------------------- */
+/* GLOBAL
+-------------------------------------------------- */
+@charset "UTF-8";
+
+@font-face {
+    font-family: 'Icone';
+    src: url('../../fonts/Font Awesome 5 Free-Solid-900.otf');
+}
+
+.icone-fonte {
+    font-family: 'Icone';
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #17959c;
+    font-family: 'Athiti', sans-serif;
+}
+
+.img-fundo {
+    width: 100%;
+    height: auto;
+    position: absolute;
+    bottom: 0px;
+    overflow: hidden;
+}
+
+    .img-fundo img {
+        min-width: 100%;
+        height: auto;
+    }
+
+.uppercase {
+    text-transform: uppercase;
+}
+
+/* LOGIN
+-------------------------------------------------- */
+#login {
+    width: 300px;
+    height: 320px;
+    border-radius: 10px;
+    background-color: #eef2f2;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin: -160px 0px 0px -150px;
+    padding: 15px;
+    z-index: 999;
+}
+
+    #login form {
+        margin-top: 10px;
+    }
+
+        #login form label span {
+            margin-right: 10px;
+        }
+
+        #login form input {
+            width: 100%;
+            height: 40px;
+            margin-bottom: 10px;
+            padding-left: 10px;
+            border-radius: 10px;
+        }
+
+        #login form .mensagem-erro {
+            float: right;
+            color: red;
+        }
+
+        #login form .btn {
+            background-color: #17959c;
+            color: #ffffff;
+            border-radius: 5px;
+            margin-top: 15px;
+        }
+
+            #login form .btn:hover {
+                background-color: #12676c;
+            }
+
+#erro-login {
+    width: 300px;
+    height: 320px;
+    border-radius: 10px;
+    background-color: #eef2f2;
+    margin: 0 auto;
+    padding: 20px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin: -160px 0px 0px -150px;
+    text-align: center;
+    s;
+}
+
+    #erro-login h2 {
+        margin: 70px 0px 45px 0px;
+    }
+
+    #erro-login .btn {
+        width: 100%;
+        height: 40px;
+        background-color: #17959c;
+        color: #ffffff;
+        border-radius: 5px;
+        margin-top: 15px;
+    }
+
+        #erro-login .btn:hover {
+            background-color: #12676c;
+        }

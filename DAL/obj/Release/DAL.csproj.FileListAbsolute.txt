@@ -1,0 +1,11 @@
+D:\_WILSON\_PROJETOS\_C#\CalcTel\Sistema\DAL\bin\Release\DAL.dll.config
+D:\_WILSON\_PROJETOS\_C#\CalcTel\Sistema\DAL\bin\Release\DAL.dll
+D:\_WILSON\_PROJETOS\_C#\CalcTel\Sistema\DAL\bin\Release\DAL.pdb
+D:\_WILSON\_PROJETOS\_C#\CalcTel\Sistema\DAL\bin\Release\MySql.Data.dll
+D:\_WILSON\_PROJETOS\_C#\CalcTel\Sistema\DAL\bin\Release\MySql.Web.dll
+D:\_WILSON\_PROJETOS\_C#\CalcTel\Sistema\DAL\bin\Release\Google.Protobuf.dll
+D:\_WILSON\_PROJETOS\_C#\CalcTel\Sistema\DAL\bin\Release\MySql.Data.xml
+D:\_WILSON\_PROJETOS\_C#\CalcTel\Sistema\DAL\bin\Release\MySql.Web.xml
+D:\_WILSON\_PROJETOS\_C#\CalcTel\Sistema\DAL\obj\Release\DAL.csprojResolveAssemblyReference.cache
+D:\_WILSON\_PROJETOS\_C#\CalcTel\Sistema\DAL\obj\Release\DAL.dll
+D:\_WILSON\_PROJETOS\_C#\CalcTel\Sistema\DAL\obj\Release\DAL.pdb

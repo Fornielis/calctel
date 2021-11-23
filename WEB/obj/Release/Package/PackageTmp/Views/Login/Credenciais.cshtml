@@ -1,0 +1,46 @@
+﻿@model DTO.Usuario
+<!DOCTYPE html>
+<html>
+<head>
+    @* METAS - SITE *@
+    <meta charset="UTF-8">
+    <meta name=viewport content="width=device-width, initial-scale=1" />
+    @* OUTROS *@
+    <title>CalcTel</title>
+    <link href="~/Imagens/ico_logo_calctel.ico" rel="shortcut icon" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css?family=Athiti" rel="stylesheet">
+    @Styles.Render("~/Content/Credenciais")
+</head>
+<body>
+    @* LOGIN *@
+    <div id="login" class="animated zoomInUp">
+        @* LOGO *@
+        <img src="~/Imagens/Logo_pequeno.png" alt="LOGO" />
+        @* FORMULÁRIO DE LOGIN *@
+        <form  action="~/Login/Validacao" method="post">
+            <label><span class="icone-fonte"></span>Usuário</label><span class="field-validation-valid mensagem-erro" data-valmsg-for="nome" data-valmsg-replace="true"></span>
+            <input class="text-box single-line uppercase" data-val="true" data-val-required="OBRIGATÓRIO" id="nome" name="nome" type="text" value="" /><br />
+
+            <label><span class="icone-fonte"></span>Senha</label><span class="field-validation-valid mensagem-erro" data-valmsg-for="senha" data-valmsg-replace="true"></span>
+            <input data-val="true" data-val-required="OBRIGATÓRIO" id="senha" name="senha" type="password" /><br />
+
+            <input class="btn" type="submit" value="Entrar">
+        </form>
+        @{ // RETORNO - ERRO
+            if (ViewBag.Retorno == "erro")
+            {
+                <div id="erro-login">
+                    @* LOGO *@
+                    <img src="~/Imagens/Logo_pequeno.png" alt="LOGO" />
+                    <h2>Dados inválidos</h2>
+                    <input class="btn" type="button" value="Tentar Novamente">
+                </div>
+            }
+        }        
+    </div>
+    <div class="img-fundo">
+        <img src="~/Imagens/FUNDO.png"  alt="IMAGEM FUNDO" />
+    </div>
+    @Scripts.Render("~/bundles/Credenciais")
+</body>
+</html>

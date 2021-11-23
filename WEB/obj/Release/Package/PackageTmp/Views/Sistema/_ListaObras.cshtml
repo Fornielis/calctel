@@ -1,0 +1,174 @@
+﻿@model DTO.ObraLista
+@* TITULO *@
+<div id="box-superior">
+    <h1 class="titulo animated bounceInRight"><span class="icone-fonte"></span> Obras Cadastradas</h1>
+    <h1 class="btn-acoes" onclick="abreFormulario('#adicionar-obra')">
+        <span id="nova-obra" class="icone-fonte"></span>
+    </h1>
+</div>
+@* TABELA - LISTA OBRAS *@
+<table id="tabela-abras" class="animated bounceInLeft">
+    <thead>
+        <tr>
+            <th class="titulo-escuro">OBRA</th>
+            <th class="titulo-escuro">CONTRATO</th>
+            <th>CONTRATADA</th>
+            <th>FISCALIZAÇÃO</th>
+            <th>IMPACTO</th>
+            <th class="titulo-escuro" colspan="3"><span class="icone-fonte"></span></th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            if (ViewBag.ListaVazia == "True")
+            {
+                // A LISTA SENDO VAZIA A LISTA DE OBRAS FICA EM BRANCO
+            }
+            else
+            {
+                foreach (var item in Model)
+                {
+                    //MONTAGEM LINK
+                    string href = Request.Url.Scheme + "://" + Request.Url.Authority + "/Sistema/ObraItens?numObra=" + @item.numObra;
+                    // DADOS TABELA
+                    <tr>
+                        @* NÚMERO OBRA *@
+                        <td onclick="linkLinhaObra('@href')">@item.numObra</td>
+                        @* CONTRATO *@
+                        <td onclick="linkLinhaObra('@href')">@item.contrato</td>
+                        @{ // OBRA EM ABERTO
+                            if (item.Estatus == "AB")
+                            {
+                                <td onclick="linkLinhaObra('@href')"><span class="icone-fonte"></span></td>
+                                <td onclick="linkLinhaObra('@href')"><span class="icone-fonte"></span></td>
+                                <td onclick="linkLinhaObra('@href')"><span class="icone-fonte"></span></td>
+                            }
+                            // OBRA FINALIZADA
+                            else
+                            {
+                                // CONTRATADA
+                                <td class="pading-top-inf legenda-info legenda-obras" onclick="linkLinhaObra('@href')">
+                                    @* LMN *@
+                                    <div class="legenda-item categoria LMN-categoria-obra"><p>MATERIAL</p></div>
+                                    <div class="legenda-item valor LMN-valor-obra"><p><b>$</b> @item.Valor_Material</p></div><br />
+                                    @* OPT *@
+                                    <div class="legenda-item categoria MO-categoria-obra"><p>MÃO OBRA</p></div>
+                                    <div class="legenda-item valor MO-valor-obra"><p><b>$</b> @item.Valor_MaoObra</p></div><br />
+                                    @* IND *@
+                                    <div class="legenda-item categoria TOT-categoria-obra"><p>TOTAL</p></div>
+                                    <div class="legenda-item valor TOT-valor-obra"><p><b>$</b> @item.Valor_Total_Contratada</p></div><br />
+                                </td>
+                                // FISCALIZAÇÃO
+                                <td class="pading-top-inf legenda-info legenda-obras" onclick="linkLinhaObra('@href')">
+                                    @* LMN *@
+                                    <div class="legenda-item categoria LMN-categoria-obra"><p>MATERIAL</p></div>
+                                    <div class="legenda-item valor LMN-valor-obra"><p><b>$</b> @item.Valor_Material_Fiscalizacao</p></div><br />
+                                    @* OPT *@
+                                    <div class="legenda-item categoria MO-categoria-obra"><p>MÃO OBRA</p></div>
+                                    <div class="legenda-item valor MO-valor-obra"><p><b>$</b> @item.Valor_MaoObra_Fiscalizacao</p></div><br />
+                                    @* IND *@
+                                    <div class="legenda-item categoria TOT-categoria-obra"><p>TOTAL</p></div>
+                                    <div class="legenda-item valor TOT-valor-obra"><p><b>$</b> @item.Valor_Total_Fiscaizacao</p></div><br />
+                                </td>
+                                // IMPACTO
+                                <td class="pading-top-inf legenda-info legenda-obras" onclick="linkLinhaObra('@href')">
+                                    @* LMN *@
+                                    <div class="legenda-item categoria LMN-categoria-obra"><p>MATERIAL</p></div>
+                                    <div class="legenda-item valor LMN-valor-obra"><p><b>$</b> @item.Valor_Material_Impacto <span class="icone-fonte"></span> <span> @item.Percentual_Material_Impacto.ToString("N0")%</span></p></div><br />
+                                    @* OPT *@
+                                    <div class="legenda-item categoria MO-categoria-obra"><p>MÃO OBRA</p></div>
+                                    <div class="legenda-item valor MO-valor-obra"><p><b>$</b> @item.Valor_MaoObra_Impacto <span class="icone-fonte"></span> <span> @item.Percentual_MaoObra_Impacto.ToString("N0")%</span></p></div><br />
+                                    @* IND *@
+                                    <div class="legenda-item categoria TOT-categoria-obra"><p>TOTAL</p></div>
+                                    <div class="legenda-item valor TOT-valor-obra"><p><b>$</b> @item.Valor_Total_Impacto <span class="icone-fonte"></span> <span> @item.Percentual_Total_Impacto.ToString("N0")%</span></div><br />
+                                </td>
+                            }
+
+                        }
+                        
+                        @{
+                            // CAMPO APENAS PARA ADM
+                            if (Session["Perfil"].ToString() == "ADM")
+                            {
+                                // ICONE STATUS
+                                // SE STATUS FOR AB- ABERTO
+                                if (item.Estatus == "AB")
+                                {
+                                    // SE NENHUM ITEM TIVER SIDO LANÇADO
+                                    if (item.Valor_Total_Impacto == 0)
+                                    {
+                                        <td></td>
+                                    }
+                                    else
+                                    {
+                                        <td class="campo-acao">
+                                            <a data-ajax="true" data-ajax-loading="#progress" data-ajax-mode="replace" data-ajax-update="#resultado-acao" href="~/Sistema/ObraAcaoAlterarEstatus?idObra=@item.ID">
+                                                <span class="icone-fonte status"></span>
+                                            </a>
+                                        </td>
+                                    }
+                                }
+                                // SE STATUS FOR FN- FINAL
+                                if (item.Estatus == "FN")
+                                {
+                                    <td class="campo-acao">
+                                        <a data-ajax="true" data-ajax-loading="#progress" data-ajax-mode="replace" data-ajax-update="#resultado-acao" href="~/Sistema/ObraAcaoAlterarEstatus?idObra=@item.ID">
+                                            <span class="icone-fonte status"></span>
+                                        </a>
+                                    </td>
+                                }
+                            }
+                        }
+                        @* ICONE ALTERAR *@
+                        <td class="campo-acao">
+                            <a data-ajax="true" data-ajax-loading="#progress" data-ajax-mode="replace" data-ajax-update="#resultado-acao" href="~/Sistema/ObraAcaoAlterar?idObra=@item.ID">
+                                <span class="icone-fonte status"></span>
+                            </a>
+                        </td>
+                        @* ICONE DELETAR *@
+                        <td class="campo-acao">
+                            <a data-ajax="true" data-ajax-loading="#progress" data-ajax-mode="replace" data-ajax-update="#resultado-acao" href="~/Sistema/ObraAcaoDeletar?idObra=@item.ID">
+                                <span class="icone-fonte status"></span>
+                            </a>
+                        </td>
+                    </tr>
+                                }
+                            }
+        }
+    </tbody>
+</table>
+@* ADICIONAR OBRA *@
+<div id="adicionar-obra" class="animated">
+    <form action="~/Sistema/ObraNova" data-ajax="true" data-ajax-loading="#progress" data-ajax-mode="replace" data-ajax-update="#resultado" id="form" method="post">
+        <h2>Nova Obra</h2>
+
+        <span class="field-validation-valid mensagem-erro" data-valmsg-for="numObra" data-valmsg-replace="true"></span>
+        <input class="text-box single-line txt" data-val="true" data-val-required="OBRIGATÓRIO" id="numObra" name="numObra" type="number" value="" placeholder="OBRA" /><br />
+
+        <span class="field-validation-valid mensagem-erro" data-valmsg-for="ValorMaoObra" data-valmsg-replace="true"></span>
+        <input class="text-box single-line txt mask-valor" data-val="true" data-val-required="OBRIGATÓRIO" id="ValorMaoObra" name="ValorMaoObra" type="text" value="" placeholder="VALOR MÃO OBRA" /><br />
+
+        <span class="field-validation-valid mensagem-erro" data-valmsg-for="contrato" data-valmsg-replace="true"></span>
+        <select class="text-box single-line uppercase txt" data-val="true" data-val-required="OBRIGATÓRIO" id="contrato" name="contrato">
+            <option value="">CONTRATO</option>
+            @{
+                foreach (var item in ViewBag.Contratos)
+                {
+                    <option value="@item.contrato">@item.contrato</option>
+                }
+            }
+        </select>
+
+        <input class="btn" type="submit" value="Salvar">
+        <div class="btn-fechar" onclick="fechaFormulario('#adicionar-obra')"><span class="icone-fonte"></span></div>
+    </form>
+</div>
+@* SCRIPTS *@
+<script type="text/javascript">
+    $("#progress").css('display', 'none');
+    $(".box-acao").remove();
+    mascarasTextos();
+    // VALIDAÇÃO
+    jQuery.validator.unobtrusive.parse();
+    jQuery.validator.unobtrusive.parse("#form");
+</script>

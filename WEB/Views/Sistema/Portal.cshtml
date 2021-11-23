@@ -1,0 +1,37 @@
+﻿@model DTO.Usuario
+<!DOCTYPE html>
+<html>
+<head>
+    @* METAS - SITE *@
+    <meta charset="UTF-8">
+    <meta name=viewport content="width=device-width, initial-scale=1" />
+    @* OUTROS *@
+    <title>CalcTel</title>
+    <link href="~/Imagens/ico_logo_calctel.ico" rel="shortcut icon" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css?family=Athiti" rel="stylesheet">
+    @Styles.Render("~/Content/Portal")
+</head>
+<body>
+    @* MENU - SUPERIOR *@
+    <nav>
+        <img src="~/Imagens/Logo_portal.png" alt="LOGO" class="animated bounceInLeft" />
+        <a href="~/Login/Credenciais">
+            <section class="animated bounceInRight">
+                <h1><span class="icone-fonte"></span></h1>
+            </section>
+        </a>
+        <div class="animated bounceInRight">
+            <h1><span class="icone-fonte"></span> @Session["Nome"]</h1>
+        </div>
+    </nav>
+    @* RESULTADO *@
+    <div id="resultado"></div>
+    @* RESULTADO *@
+    <div id="resultado-acao"></div>
+    @* PROCESS *@
+    <div id="progress">
+        <img src="~/Imagens/Loader.gif" alt="LOADER" />
+    </div>
+    @Scripts.Render("~/bundles/Portal")
+</body>
+</html>

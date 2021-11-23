@@ -1,0 +1,821 @@
+﻿/* Responsividade:
+   
+    - Grid Bootstrap:
+        col-xs | até 480px
+        col-sm | maior igual 768px
+        col-md | maior igual 998px
+        col-lg | maior igual 1200px
+-------------------------------------------------- */
+/* GLOBAL
+-------------------------------------------------- */
+@charset "UTF-8";
+
+@font-face {
+    font-family: 'Icone';
+    src: url('../../fonts/Font Awesome 5 Free-Solid-900.otf');
+}
+
+.icone-fonte, sep {
+    font-family: 'Icone';
+}
+
+.icone-fonte-vermelho {
+    font-family: 'Icone';
+    color: red;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    height: auto;
+    background-color: #eef2f2;
+    font-family: 'Athiti', sans-serif;
+}
+
+.uppercase {
+    text-transform: uppercase;
+}
+
+a:hover,
+a:visited,
+a:active,
+a:link {
+    text-decoration: none;
+}
+
+/* MENU - SUPERIOR
+-------------------------------------------------- */
+nav {
+    width: 100%;
+    height: 64px;
+    padding: 10px 5% 10px 5%;
+    position: fixed;
+    z-index: 999;
+    background: #040005;
+    background: -moz-linear-gradient(-45deg, #040005 0%, #17959c 100%);
+    background: -webkit-linear-gradient(-45deg, #040005 0%,#17959c 100%);
+    background: linear-gradient(135deg, #040005 0%,#17959c 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#040005', endColorstr='#17959c',GradientType=1 );
+    border-bottom: solid 3px #17959c;
+}
+
+    nav > img {
+        float: left;
+    }
+
+    nav > div {
+        width: auto;
+        height: 40px;
+        background-color: #ffffff;
+        border-bottom-left-radius: 10px;
+        border-top-left-radius: 10px;
+        border-left: solid 4px #12676c;
+        float: right;
+        text-align: center;
+        padding: 0px 20px 0px 20px;
+    }
+
+        nav > div > h1 {
+            margin-top: 8px;
+            text-transform: uppercase;
+            font-size: 160%;
+        }
+
+            nav > div > h1 > span {
+                color: #17959c;
+            }
+
+    nav > a > section {
+        width: auto;
+        height: 40px;
+        border-bottom-right-radius: 10px;
+        border-top-right-radius: 10px;
+        float: right;
+        text-align: center;
+        padding: 0px 15px 0px 15px;
+        cursor: pointer;
+        background-color: #12676c;
+    }
+
+        nav > a > section:hover {
+            background-color: #000000;
+        }
+
+        nav > a > section > h1 {
+            margin-top: 8px;
+            text-transform: uppercase;
+            font-size: 160%;
+            color: #ffffff;
+        }
+
+/* PROCESS
+-------------------------------------------------- */
+#progress {
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    z-index: 1000;
+    background-color: rgba(23,149,156,.5);
+    display: none;
+    top: 0;
+}
+
+    #progress > img {
+        width: 200px;
+        height: 200px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin: -100px 0px 0px -100px;
+    }
+
+/* RESULTADO
+-------------------------------------------------- */
+#resultado {
+    width: 90%;
+    height: auto;
+    margin: 0px auto;
+    padding-top: 60px;
+}
+
+#box-superior{
+    width: 90%;
+    height: auto;
+    background-color: #eef2f2;
+    position: fixed;
+    z-index: 899;
+    border-bottom: solid 1px #17959c;
+}
+
+.titulo {
+    font-size: 200%;
+    float: left;
+    cursor: pointer;
+    margin-bottom: 15px;
+    color: #5b5b5f;
+}
+
+    .titulo span {
+        color: #5b5b5f;
+    }
+
+.btn-acoes {
+    font-size: 250%;
+    float: right;
+    cursor: pointer;
+    margin-bottom: 15px;
+    color: #17959c;
+}
+
+    .btn-acoes a {
+        color: #17959c;
+    }
+
+        .btn-acoes a:hover {
+            color: #17959c;
+        }
+
+/* ADICIONAR - OBRA
+-------------------------------------------------- */
+#adicionar-obra {
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    background-color: rgba(23,149,156,.5);
+    display: none;
+}
+
+    #adicionar-obra form {
+        width: 300px;
+        height: auto;
+        border-radius: 10px;
+        background-color: #cccccc;
+        position: absolute;
+        left: 50%;
+        margin: 200px 0px 0px -150px;
+        padding: 10px 20px 10px 20px;
+    }
+
+    #adicionar-obra > form > h2 {
+        border-bottom: solid 1px #000000;
+    }
+
+    #adicionar-obra form label span {
+        margin-right: 10px;
+    }
+
+    #adicionar-obra form input, select {
+        width: 100%;
+        height: 40px;
+        margin-bottom: 10px;
+        padding-left: 10px;
+        border-radius: 10px;
+    }
+
+    #adicionar-obra form .mensagem-erro {
+        float: right;
+        color: red;
+    }
+
+    #adicionar-obra form .btn {
+        background-color: #17959c;
+        color: #ffffff;
+        border-radius: 5px;
+        margin-top: 0px;
+    }
+
+        #adicionar-obra form .btn:hover {
+            background-color: #12676c;
+        }
+
+    #adicionar-obra form .btn-fechar {
+        width: auto;
+        height: auto;
+        padding: 0px 8px 0px 8px;
+        background-color: #17959c;
+        border-top-right-radius: 10px;
+        position: absolute;
+        top: 0px;
+        right: 0;
+        cursor: pointer;
+    }
+
+        #adicionar-obra form .btn-fechar:hover {
+            background-color: #12676c;
+        }
+
+        #adicionar-obra form .btn-fechar span {
+            color: #ffffff;
+            font-size: 200%;
+        }
+
+/* ADICIONAR - ITEM OBRA
+-------------------------------------------------- */
+#adicionar-item-obra {
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    background-color: rgba(23,149,156,.5);
+    display: none;
+}
+
+/* ALTERAR ITENS
+-------------------------------------------------- */
+#alterar-itens {
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    background-color: rgba(23,149,156,.5);
+    display: none;
+}
+
+    #alterar-itens form .btn-fechar {
+        width: auto;
+        height: auto;
+        padding: 0px 8px 0px 8px;
+        background-color: #17959c;
+        border-top-right-radius: 10px;
+        position: absolute;
+        top: 0px;
+        right: 0;
+        cursor: pointer;
+    }
+
+        #alterar-itens form .btn-fechar span {
+            color: #ffffff;
+            font-size: 200%;
+        }
+
+        #alterar-itens form .btn-fechar:hover {
+            background-color: #12676c;
+        }
+
+    #alterar-itens #box-formulario {
+        width: 400px;
+        height: auto;
+        border-radius: 10px;
+        background-color: #cccccc;
+        position: absolute;
+        left: 50%;
+        margin: 100px 0px 0px -200px;
+        padding: 20px 20px 15px 20px;
+    }
+
+#box-formulario {
+    width: 400px;
+    height: auto;
+    border-radius: 10px;
+    background-color: #cccccc;
+    position: absolute;
+    left: 50%;
+    margin: 100px 0px 0px -200px;
+    padding: 50px 20px 15px 20px;
+}
+
+#adicionar-item-obra form section {
+    width: 100%;
+    height: auto;
+}
+
+    #adicionar-item-obra form section label span {
+        margin-right: 10px;
+    }
+
+    #adicionar-item-obra form section input {
+        width: 85%;
+        height: 40px;
+        padding-left: 10px;
+        border-top-left-radius: 10px;
+        border-bottom-left-radius: 10px;
+        float: left;
+    }
+
+    #adicionar-item-obra form section .mensagem-erro {
+        float: left;
+        color: red;
+        margin-top: -20px;
+    }
+
+    #adicionar-item-obra form section .btn {
+        width: 15%;
+        background-color: #17959c;
+        color: #ffffff;
+        border-radius: 0;
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
+        margin-top: -20px;
+        font-family: 'Icone';
+        font-size: 150%;
+        float: left;
+    }
+
+        #adicionar-item-obra form section .btn:hover {
+            background-color: #12676c;
+        }
+
+    #adicionar-item-obra form section .btn-fechar {
+        width: auto;
+        height: auto;
+        padding: 0px 8px 0px 8px;
+        background-color: #17959c;
+        border-top-right-radius: 10px;
+        position: absolute;
+        top: 0px;
+        right: 0;
+        cursor: pointer;
+    }
+
+        #adicionar-item-obra form section .btn-fechar:hover {
+            background-color: #12676c;
+        }
+
+        #adicionar-item-obra form section .btn-fechar span {
+            color: #ffffff;
+            font-size: 200%;
+        }
+
+/* RETORNO FORMULÁRIO
+-------------------------------------------------- */
+#box-retorno-formulario {
+    width: 100%;
+    height: auto;
+    text-align: center;
+    margin-top: 40px;
+}
+
+    #box-retorno-formulario h1 {
+        color: #12676c;
+    }
+
+    #box-retorno-formulario h3 {
+        color: #12676c;
+        text-align: center;
+        font-size: 180%;
+    }
+
+    #box-retorno-formulario p {
+        text-align: center;
+        font-size: 120%;
+        margin-top: -10px;
+    }
+
+    #box-retorno-formulario label {
+        float: left;
+        font-size: 100%;
+        color: #12676c;
+    }
+
+    #box-retorno-formulario input {
+        width: 100%;
+        height: 40px;
+        padding: 0px 10px 0px 10px;
+        border-radius: 10px;
+        float: left;
+        margin: -3px 0px 20px 0px;
+    }
+
+    #box-retorno-formulario .mensagem-erro {
+        float: right;
+        color: red;
+        margin-top: 2px;
+    }
+
+    #box-retorno-formulario textarea {
+        width: 100%;
+        padding: 10px;
+        border-radius: 10px;
+        float: left;
+        margin: -3px 0px 20px 0px;
+    }
+
+    #box-retorno-formulario .btn {
+        width: 100%;
+        height: 50px;
+        background-color: #17959c;
+        color: #ffffff;
+        border-radius: 0;
+        border-radius: 10px;
+        font-size: 100%;
+        margin-top: 10px;
+    }
+
+        #box-retorno-formulario .btn:hover {
+            background-color: #12676c;
+        }
+
+/* ERRO 
+-------------------------------------------------- */
+.pading-top-inf {
+    padding: 10px 0px 10px 0px;
+}
+
+#erro {
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    background-color: rgba(23,149,156,.5);
+    text-align: center;
+}
+
+    #erro div {
+        width: 300px;
+        height: 260px;
+        border-radius: 10px;
+        background-color: #cccccc;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        margin: -160px 0px 0px -130px;
+        padding: 10px 20px 10px 20px;
+    }
+
+        #erro div p {
+            font-size: 150%;
+        }
+
+        #erro div .btn {
+            width: 100%;
+            height: 40px;
+            font-size: 120%;
+            background-color: #17959c;
+            color: #ffffff;
+            border-radius: 5px;
+            margin-top: 15px;
+        }
+
+            #erro div .btn:hover {
+                background-color: #12676c;
+            }
+/* TABELA
+-------------------------------------------------- */
+.alinha-esquerda {
+    text-align: left;
+    padding-left: 15px;
+}
+
+.alinha-direita {
+    text-align: right;
+    padding-right: 15px;
+}
+
+.seta-azul {
+    color: blue;
+}
+
+.seta-vermelha {
+    color: indianred;
+}
+
+.seta-laranja {
+    color: coral;
+}
+
+.seta-verde {
+    color: darkseagreen;
+}
+
+.radius-top-left {
+    border-top-left-radius: 10px;
+}
+
+.radius-top-right {
+    border-top-right-radius: 10px;
+}
+
+.border-right {
+    border-right: solid 2px #12676c;
+}
+
+table {
+    width: 100%;
+    margin: 74px auto;
+}
+
+
+thead {
+    width: 100%;
+    background-color: #17959c;
+}
+
+    thead tr {
+        height: 34px;
+        border-bottom: solid 2px #12676c;
+    }
+
+        thead tr th {
+            text-align: center;
+            color: #ffffff;
+        }
+
+tbody {
+    width: 100%;
+}
+
+    tbody tr {
+        height: 40px;
+        text-align: center;
+        font-size: 120%;
+        cursor: pointer;
+        background: #eef2f2;
+        background: -moz-linear-gradient(top, #eef2f2 0%, #c9cdd0 100%);
+        background: -webkit-linear-gradient(top, #eef2f2 0%,#c9cdd0 100%);
+        background: linear-gradient(to bottom, #eef2f2 0%,#c9cdd0 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eef2f2', endColorstr='#c9cdd0',GradientType=0 );
+    }
+
+    tbody tr span{
+        font-size: 90%;
+        font-weight: bold;
+    }
+
+        tbody tr:hover {
+            color: #ffffff;
+            background: #17959c;
+            background: -moz-linear-gradient(top, #17959c 0%, #12676c 100%);
+            background: -webkit-linear-gradient(top, #17959c 0%,#12676c 100%);
+            background: linear-gradient(to bottom, #17959c 0%,#12676c 100%);
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#17959c', endColorstr='#12676c',GradientType=0 );
+        }
+
+.titulo-escuro {
+    background-color: #12676c;
+}
+
+.campo-acao {
+    cursor: initial;
+}
+
+    .campo-acao span {
+        cursor: pointer;
+    }
+
+tbody tr:hover .campo-acao {
+    color: #ffffff;
+    background: #17959c;
+    background: -moz-linear-gradient(top, #17959c 0%, #17959c 100%);
+    background: -webkit-linear-gradient(top, #17959c 0%,#17959c 100%);
+    background: linear-gradient(to bottom, #17959c 0%,#17959c 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#17959c', endColorstr='#17959c',GradientType=0 );
+}
+
+.status {
+    color: #12676c;
+    font-size: 120%;
+}
+
+tbody tr:hover .status {
+    color: #ffffff;
+}
+
+.categoria {
+    color: #ffffff;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.quantidade {
+    background-color: #ffffff;
+    font-weight: bold;
+    margin-left: -5px;
+}
+
+.valor {
+    background-color: #ffffff;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    margin-left: -5px;
+}
+
+.legenda-item{
+    width: 30%;
+    height: 23px;
+    display: inline-block;
+}
+
+.legenda-info{
+    min-width: 30px;
+    max-width: 400px;
+}
+
+    .legenda-info p{
+        font-size: 85%;
+        padding-top: 1px;
+    }
+
+.legenda-obras{
+    width: auto;
+    padding: 5px 0px 0px 0px;
+}
+
+    .legenda-obras div{
+        margin: 0px 0px 5px 0px;
+        float: left;
+    }
+
+    .legenda-obras p{
+        font-size: 85%;
+        padding-top: 2px;
+    }
+
+        .legenda-obras p b{
+            float: left;
+            margin-left: 5px;
+        }
+
+            .legenda-obras p span{
+            }
+
+.numObra{
+    padding-left: 15px;
+}
+
+.descricao{
+    min-width: 30px;
+    max-width: 400px;
+}
+
+.LMN-categoria {
+    background-color: #e06c0f;
+    margin-bottom: 5px;
+    font-size: 80%;
+    padding-top: 2.5px;
+}
+
+.OPT-categoria {
+    background-color: #148c1f;
+    margin-bottom: 5px;
+    font-size: 80%;
+    padding-top: 2.5px;
+}
+
+.IND-categoria {
+    background-color: #b51f2d;
+    margin-bottom: 5px;
+    font-size: 80%;
+    padding-top: 2.5px;
+}
+
+.DIF-categoria {
+    background-color: #000000;
+    font-size: 80%;
+    padding-top: 2.5px;
+}
+
+.LMN-categoria-obra {
+    width: 30%;
+    background-color: #e06c0f;
+    font-size: 80%;
+    padding-top: 2.5px;
+    margin-left: 2%;
+}
+
+.MO-categoria-obra {
+    width: 30%;
+    background-color: #0e45ab;
+    font-size: 80%;
+    padding-top: 2.5px;
+    margin-left: 2%;
+}
+
+.TOT-categoria-obra {
+    width: 30%;
+    background-color: #000000;
+    font-size: 80%;
+    padding-top: 2.5px;
+    margin-left: 2%;
+}
+
+.LMN-valor-obra {
+    width: 66%;
+    border-right: solid 4px #e06c0f;
+    text-align: right;
+    padding-right: 5px;
+}
+
+.MO-valor-obra {
+    width: 66%;
+    border-right: solid 4px #0e45ab;
+    text-align: right;
+    padding-right: 5px;
+}
+
+.TOT-valor-obra {
+    width: 66%;
+    border-right: solid 4px #000000;
+    text-align: right;
+    padding-right: 5px;
+}
+
+.LMN-valor {
+    border-right: solid 4px #e06c0f;
+}
+
+.OPT-valor {
+    border-right: solid 4px #148c1f;
+}
+
+.IND-valor {
+    border-right: solid 4px #b51f2d;
+}
+
+.DIF-valor {
+    border-right: solid 4px #000000;
+}
+
+
+tbody tr:hover .quantidade, .valor {
+    color: #000000;
+}
+
+/* TABELA
+-------------------------------------------------- */
+#box-excluir {
+    width: 100%;
+    height: auto;
+    margin-top: 130px;
+    padding: 2px;
+    display: none;
+}
+
+    #box-excluir h1 {
+        color: #12676c;
+        font-size: 125%;
+    }
+
+/* RESULTADO - AÇÃO
+-------------------------------------------------- */
+.box-acao {
+    width: 100%;
+    min-height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    background-color: rgba(23,149,156,.5);
+}
+
+    .box-acao h3{
+        text-align: center;
+        margin-top: 40px;
+        margin-bottom: 20px;
+        color: #12676c;
+    }
+
+    .box-acao #adicionar-obra {
+        display: block;
+    }
