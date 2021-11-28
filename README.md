@@ -4,7 +4,7 @@
 
 <p align="justify">
 Aplicação utilizada na <b>VIVO</b> pela equipe de fiscalização. O objeto é de relacionar e contabilizar todos os dados colhidos na troca dos postes nas ruas de São Paulo. </br>
-O fiscal em campo lançava todos os apontamentos obtidos em loco no sistema que consultava toda base de encargos e construía ao final da tarefa um relatório detalhado do custo informado pela contratada e comparava com o observado em campo.  
+O fiscal em campo lança todos os apontamentos obtidos em loco no sistema que consultava toda base de encargos e construía ao final da tarefa um relatório detalhado do custo informado pela contratada e comparava com o observado em campo.  
 </p>
 
 <h1 align="center">
